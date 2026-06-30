@@ -5,7 +5,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/sridharj21/My-webhook-deploy.git'
+                git branch: 'main',
+                    url: 'https://github.com/sridharj21/My-webhook-deploy.git'
             }
         }
 
@@ -20,7 +21,7 @@ pipeline {
                 sh '''
                 docker stop python-web-app || true
                 docker rm python-web-app || true
-                docker run -d --name python-web-app -p 5000:5000 python-web-app
+                docker run -d --name python-web-app -p 6000:5000 python-web-app
                 '''
             }
         }
